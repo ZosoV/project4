@@ -141,3 +141,25 @@ a.article-title:hover {
   float: left;
   color: #999;
 }
+
+.middle-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.middle-text > h1 {
+  font-size: 40px;
+}
+
+.middle-text > p {
+  padding: 30px;
+}
+
+.center-title {
+  background-image: url(../images/img_black_texture.jpg);
+  background-repeat: repeat;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
