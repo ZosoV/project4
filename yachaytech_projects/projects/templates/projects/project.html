@@ -1,0 +1,68 @@
+<!-- #author: Oscar Guarnizo -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "projects/layout.html" %}
+
+{% block title %}
+    {{ project.name }}
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" style="padding-top: 1%;">
+    <div class="row">
+        <div class="col">
+                <div class="card bg-dark text-white">
+                        <img src="../../static/orders/project_img.jpg" class="card-img" alt="...">
+                        <div class="card-img-overlay">
+                          <h3 class="card-title">{{ project.name }}</h3>
+                          <h5 class="card-title"> By {{ project.user.first_name }} {{ project.user.last_name }} (Username: {{ project.user.username }}) </h5>
+                          <p class="card-text"> {{ project.description }} </p>
+                          <p class="card-text"> {{ project.state }} </p>
+                          <p class="card-text"> {{ project.school }} </p>
+                          <p class="card-text">Last updated 3 mins ago</p>
+                        </div>
+                </div>
+        </div>
+
+    </div>
+    
+</div>
+<div style="padding: 0.5%;">  
+ 
+<h2> Comments </h2>
+
+<div class="my-4" id="messages">
+    {% for review in reviews %}
+
+    <div class="container_comments" style="color: black;">
+        <img src="../../static/orders/profile.png" alt="Avatar">
+        <strong> {{ review.user.username }} ( {{ review.user.first_name }} {{ review.user.last_name }})</strong> : 
+        <p> {{ review.comment }} </p>
+        <!-- <span class="time-right">${response["time"]}</span> -->
+    </div>
+    {% endfor %}
+</div>
+
+{% if can_comment and not own_user %}
+<!-- Form -->
+<form style="color: #1ab4ad; padding: 3%;" action="{% url 'submit_comment' project.school.code project.id %}" method="POST">
+{% csrf_token %} 
+<div class="form-group">
+        <label for="exampleFormControlTextarea1"> New Comment</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+</div>
+
+    <!-- Sign in button -->
+<div class="form-group">
+    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+    Submit New Comment
+    </button>
+</div>
+{% endif %}
+
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- #author: Oscar Guarnizo -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "projects/layout.html" %}
+
+{% block title %}
+    {{ school.code }}
+{% endblock %}
+
+{% block body %}
+<div class="main">
+
+    <h1> {{ school.name }} </h1>
+
+    <ul>
+        {% for project in projects %}
+            <li> 
+                    <a href="{% url 'project' school.code project.id %}">  {{ project }} </a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</div>
+{% endblock %}

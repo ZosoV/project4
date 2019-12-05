@@ -1,0 +1,78 @@
+<!-- #author: Oscar Guarnizo -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "projects/layout.html" %}
+
+{% block title %}
+  New Project
+{% endblock %}
+
+{% block body %}
+
+<!-- Material form login -->
+<div class="container" style="padding-top: 5%;">
+    <div class="row">
+        <div class="col">
+            <div class="card" >
+
+                <h5 class="card-header white-text text-center" style="background: #18b1e8;">
+                  <strong> New Project </strong>
+                </h5>
+              
+                <!--Card content-->
+                <!-- <div class="card-body"> -->
+              
+                  <!-- Form -->
+                  <form style="color: #757575; padding: 3%;" action="{% url 'submit_project'%}" method="POST">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Name</label>
+                          <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="My new project">
+                        </div>
+                        <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                        </div>
+                    
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">State of Project</label>
+                          <select class="form-control" id="exampleFormControlSelect1" name="state">
+                            <option value="In Progress">In Progress</option>
+                            <option value="Culminated">Culminated</option>
+                            <option value="Proposal">Proposal </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                                <label for="exampleFormControlSelect1">School</label>
+                                <select class="form-control" id="exampleFormControlSelect1" name="school_code">
+                                  <option value="MATH">  School of Mathematical and Computational Science </option>
+                                  <option value="PHYS"> School of Physical Sciences and Nanotechnology  </option>
+                                  <option value="BIO"> School of Biological Science and Engineering  </option>
+                                  <option value="GEO"> School of Geological Science and Engineering  </option>
+                                  <option value="CHEM"> School of Chemical Science and Engineering  </option>
+
+                                </select>
+                              </div>
+                         <!-- Sign in button -->
+                        <div class="form-group">
+                          <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+                            Create New Project
+                          </button>
+                        </div>
+
+                      </form>
+                      
+                <!-- </div>  -->
+        
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script src="../../static/orders/js_scripts/create_project.js"> </script>
+{% endblock %}

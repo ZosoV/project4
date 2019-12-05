@@ -1,0 +1,42 @@
+<!-- #author: Oscar Guarnizo -->
+<!-- #university: Yachay Tech -->
+<!-- #course: Web Programming 2019 -->
+
+{% extends "projects/layout.html" %}
+
+{% block title %}
+     {{ username }}
+{% endblock %}
+
+{% block body %}
+
+<!-- <div class="container" style="padding-top: 2%;">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div> -->
+
+{% load static %}
+<div class="container" >
+    <div class="row container-cards">
+            {% for school in schools %}
+                <div class="col-lg-4" style="padding: 1%">
+
+                    <div class="card" style="width: 18rem; color: black;">
+                            <img src="../../static/{{ school.img }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title"> {{ school.code }} </h5>
+                            <p class="card-text"> {{ school.name }} </p>
+                            <a href="{% url 'school' school.code %}" class="btn btn-primary"> See Projects </a>
+                            </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+    </div>
+</div>             
+
+
+{% endblock %}
